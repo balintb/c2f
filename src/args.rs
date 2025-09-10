@@ -64,7 +64,7 @@ impl ArgsError {
 }
 
 pub fn print_help() {
-    println!("c2f 0.1.0");
+    print_version();
     println!("Write clipboard contents to file");
     println!();
     println!("Usage: c2f [OPTIONS] [filename]");
@@ -80,7 +80,7 @@ pub fn print_help() {
 }
 
 pub fn print_version() {
-    println!("c2f 0.1.0");
+    println!("c2f 0.0.1");
 }
 
 pub fn print_error(err: &ArgsError) {

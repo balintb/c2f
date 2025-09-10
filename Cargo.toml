@@ -1,6 +1,6 @@
 [package]
 name = "c2f"
-version = "0.1.0"
+version = "0.0.1"
 repository = "https://github.com/balintb/c2f"
 edition = "2021"
 homepage = "https://github.com/balintb/c2f"
@@ -12,7 +12,7 @@ pre-release-commit-message = "chore: release {{version}}"
 tag-message = "Release {{version}}"
 tag-name = "v{{version}}"
 pre-release-replacements = [
-    { file = "src/args.rs", search = "0\\.1\\.0", replace = "{{version}}" },
+    { file = "src/args.rs", search = "0\\.0\\.1", replace = "{{version}}" },
 ]
 
 [dependencies]
