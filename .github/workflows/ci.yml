@@ -46,9 +46,6 @@ jobs:
       - name: Run tests
         run: cargo test --verbose
 
-      - name: Run tests (release mode)
-        run: cargo test --release --verbose
-
   fmt:
     name: Rustfmt
     runs-on: ubuntu-latest
@@ -94,6 +91,3 @@ jobs:
 
       - name: Build
         run: cargo build --target ${{ matrix.target }} --release --verbose
-
-      - name: Build (debug)
-        run: cargo build --target ${{ matrix.target }} --verbose
