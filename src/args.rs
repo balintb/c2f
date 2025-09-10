@@ -81,6 +81,7 @@ impl Args {
     }
 }
 
+#[derive(Debug)]
 pub enum ArgsError {
     Help,
     Version,
@@ -147,3 +148,7 @@ pub fn print_error(err: &ArgsError) {
         _ => {}
     }
 }
+
+#[cfg(test)]
+#[path = "args_tests.rs"]
+mod tests;
