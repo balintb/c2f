@@ -5,6 +5,8 @@ repository = "https://github.com/balintb/c2f"
 edition = "2021"
 homepage = "https://github.com/balintb/c2f"
 description = "CLI to write clipboard contents to a file"
+license = "MIT"
+categories = ["command-line-utilities", "clipboard"]
 
 # cargo-release configuration
 [package.metadata.release]

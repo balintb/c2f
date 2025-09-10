@@ -1,3 +1,6 @@
+// Copyright (c) 2025 balintb - https://github.com/balintb/c2f
+// Licensed under the MIT License
+
 use std::env;
 
 pub struct Args {

@@ -1,3 +1,6 @@
+// Copyright (c) 2025 balintb - https://github.com/balintb/c2f
+// Licensed under the MIT License
+
 mod args;
 
 use arboard::Clipboard;
