@@ -2,21 +2,12 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::PathBuf;
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Default, Serialize, Deserialize, PartialEq)]
 pub struct Config {
     #[serde(default)]
     pub ask_confirmation: bool,
     #[serde(default)]
     pub quiet: bool,
-}
-
-impl Default for Config {
-    fn default() -> Self {
-        Config {
-            ask_confirmation: false,
-            quiet: false,
-        }
-    }
 }
 
 pub fn get_config_path() -> PathBuf {
