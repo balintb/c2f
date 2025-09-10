@@ -3,6 +3,7 @@ name = "c2f"
 version = "0.0.6"
 repository = "https://github.com/balintb/c2f"
 edition = "2021"
+rust-version = "1.60"
 homepage = "https://github.com/balintb/c2f"
 description = "CLI to write clipboard contents to a file"
 license = "MIT"
@@ -19,6 +20,7 @@ arboard = "3.4"
 dirs = "5.0"
 serde = { version = "1.0", features = ["derive"] }
 toml = "0.8"
+image = { version = "0.25", default-features = false, features = ["png"] }
 
 [dev-dependencies]
 tempfile = "3.8"

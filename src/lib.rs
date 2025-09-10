@@ -5,12 +5,28 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::PathBuf;
 
-#[derive(Debug, Default, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
 pub struct Config {
     #[serde(default)]
     pub ask_confirmation: bool,
     #[serde(default)]
     pub quiet: bool,
+    #[serde(default = "default_true")]
+    pub detect_type: bool,
+}
+
+fn default_true() -> bool {
+    true
+}
+
+impl Default for Config {
+    fn default() -> Self {
+        Config {
+            ask_confirmation: false,
+            quiet: false,
+            detect_type: true,
+        }
+    }
 }
 
 pub fn get_config_path() -> PathBuf {
@@ -67,6 +83,7 @@ mod tests {
         let config = Config::default();
         assert_eq!(config.ask_confirmation, false);
         assert_eq!(config.quiet, false);
+        assert_eq!(config.detect_type, true);
     }
 
     #[test]
@@ -74,10 +91,12 @@ mod tests {
         let toml_str = r#"
             ask_confirmation = true
             quiet = true
+            detect_type = false
         "#;
         let config = parse_config_from_str(toml_str);
         assert_eq!(config.ask_confirmation, true);
         assert_eq!(config.quiet, true);
+        assert_eq!(config.detect_type, false);
     }
 
     #[test]
@@ -88,6 +107,7 @@ mod tests {
         let config = parse_config_from_str(toml_str);
         assert_eq!(config.ask_confirmation, true);
         assert_eq!(config.quiet, false); // Should use default
+        assert_eq!(config.detect_type, true); // Should use default
     }
 
     #[test]
@@ -129,6 +149,7 @@ mod tests {
         let config = Config {
             ask_confirmation: true,
             quiet: true,
+            detect_type: true,
         };
 
         let toml_string = toml::to_string(&config).unwrap();
