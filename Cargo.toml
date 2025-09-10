@@ -13,9 +13,6 @@ categories = ["command-line-utilities"]
 pre-release-commit-message = "chore: release {{version}}"
 tag-message = "Release {{version}}"
 tag-name = "v{{version}}"
-pre-release-replacements = [
-    { file = "src/args.rs", search = "0\\.0\\.4", replace = "{{version}}" },
-]
 
 [dependencies]
 arboard = "3.4"
