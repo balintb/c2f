@@ -1,6 +1,7 @@
+mod args;
+
 use arboard::Clipboard;
 use c2f::{determine_action, load_config};
-use clap::{Arg, Command};
 use std::fs;
 use std::io::{self, Write};
 
@@ -16,40 +17,24 @@ fn ask_confirmation(filename: &str, append: bool) -> bool {
 }
 
 fn main() {
-    let matches = Command::new("c2f")
-        .version("0.1.0")
-        .about("Write clipboard contents to file")
-        .arg(
-            Arg::new("filename")
-                .help("File to write to. Defaults to 'clipboard' if not provided")
-                .required(false)
-                .index(1),
-        )
-        .arg(
-            Arg::new("append")
-                .short('a')
-                .long("append")
-                .help("Append to file instead of overwriting")
-                .action(clap::ArgAction::SetTrue),
-        )
-        .arg(
-            Arg::new("quiet")
-                .short('q')
-                .long("quiet")
-                .help("Suppress all output")
-                .action(clap::ArgAction::SetTrue),
-        )
-        .get_matches();
+    let args = match args::Args::parse() {
+        Ok(args) => args,
+        Err(err) => {
+            match err {
+                args::ArgsError::Help => args::print_help(),
+                args::ArgsError::Version => args::print_version(),
+                _ => args::print_error(&err),
+            }
+            std::process::exit(err.exit_code());
+        }
+    };
 
-    let filename = matches
-        .get_one::<String>("filename")
-        .map(|s| s.as_str())
-        .unwrap_or("clipboard");
-    let append = matches.get_flag("append");
-    let quiet_flag = matches.get_flag("quiet");
+    let filename = args.filename();
+    let append = args.append;
+    let quiet_flag = args.quiet;
 
     if filename == "clipboard"
-        && !matches.contains_id("filename")
+        && !args.has_explicit_filename()
         && !append
         && std::path::Path::new("clipboard").exists()
     {
