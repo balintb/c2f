@@ -6,6 +6,13 @@ Simple CLI tool to write clipboard contents to a file with content format detect
 
 `c2f` is a lightweight cross-platform command-line utility that saves or appends your clipboard contents to a file. It can automatically detect content types and add an appropriate file extension.
 
+![GitHub top language](https://img.shields.io/github/languages/top/balintb/c2f)
+![Crates.io License](https://img.shields.io/crates/l/c2f)
+
+![Crates.io Version](https://img.shields.io/crates/v/c2f)
+![Crates.io Size](https://img.shields.io/crates/size/c2f)
+![Crates.io MSRV](https://img.shields.io/crates/msrv/c2f?logo=rust)
+
 ## Installation
 
 ### Homebrew (Recommended)
