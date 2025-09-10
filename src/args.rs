@@ -23,9 +23,7 @@ impl Args {
                 "-V" | "--version" => return Err(ArgsError::Version),
                 "-a" | "--append" => parsed.append = true,
                 "-q" | "--quiet" => parsed.quiet = true,
-                arg if arg.starts_with('-') => {
-                    return Err(ArgsError::UnknownFlag(arg.to_string()))
-                }
+                arg if arg.starts_with('-') => return Err(ArgsError::UnknownFlag(arg.to_string())),
                 _ => {
                     if parsed.filename.is_none() {
                         parsed.filename = Some(arg.to_string());
