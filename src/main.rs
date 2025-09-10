@@ -53,7 +53,9 @@ fn main() {
         && !append
         && std::path::Path::new("clipboard").exists()
     {
-        eprintln!("Default file 'clipboard' already exists. Use -a to append or specify a filename.");
+        eprintln!(
+            "Default file 'clipboard' already exists. Use -a to append or specify a filename."
+        );
         std::process::exit(1);
     }
 
