@@ -137,6 +137,13 @@ mod tests {
     #[test]
     fn test_config_path() {
         let path = get_config_path();
-        assert!(path.to_str().unwrap().contains(".config/c2f/config.toml"));
+        let path_str = path.to_str().unwrap();
+
+        // platform-specific checks
+        #[cfg(unix)]
+        assert!(path_str.contains(".config/c2f/config.toml"));
+
+        #[cfg(windows)]
+        assert!(path_str.contains(".config\\c2f\\config.toml"));
     }
 }
