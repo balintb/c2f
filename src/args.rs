@@ -83,7 +83,7 @@ pub fn print_help() {
 }
 
 pub fn print_version() {
-    println!("c2f 0.0.3");
+    println!("c2f 0.0.4");
 }
 
 pub fn print_error(err: &ArgsError) {
